@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loginForm {
+    width: 30vw;
+    margin: 100px auto;
+}
+.table-wrap {
+    width: 50%;
+    overflow-x: auto;
+}
+
+@media only screen and (max-width: 760px) {
+    .loginForm {
+        width: 90vw;
+    }
+    .table-wrap {
+        width: 95%;
+        overflow-x: auto;
+    }
+}
