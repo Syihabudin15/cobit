@@ -11,7 +11,7 @@
                 <button class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded shadow">Tambah</button>
                 <form action="/pengguna" >
                     <div class="flex items-center border rounded-sm">
-                        <input class="p-1" name="name" value="{{old("name")}}" required />
+                        <input class="p-1" name="nama" value="{{old("nama")}}" required />
                         <button class="border rounded-sm p-1" type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                                 <path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" />
@@ -69,4 +69,33 @@
         </div>
     </div>
 </section>
+<!-- The Modal -->
+<div class="modal auto-hide" id="tambah_pengguna">
+    <div class="modal-content">
+        <div class="header-modal">
+            <span>Tambah Sistem Informasi</span>
+            <span class="close" onclick="showHideModal('tambah_pengguna')">&times;</span>
+        </div>
+        <div class="body-modal my-2">
+            <form action="/sistem-informasi" method="post">
+                @method("post")
+                @csrf
+                <div class="flex gap-5 items-center py-2">
+                    <label for="nama" class="w-32">Nama</label>
+                    <span class="w-10">:</span>
+                    <input type="text" name="nama" id="nama" class="border p-1 rounded w-full" value="{{old("nama")}}"/>
+                </div>
+                <div class="flex gap-5 items-center py-2">
+                    <label for="deskripsi" class="w-32">Deskripsi</label>
+                    <span class="w-10">:</span>
+                    <textarea name="deskripsi" id="deskripsi" class="border rounded w-full"></textarea>
+                </div>
+                <div class="flex gap-5 justify-end mt-5">
+                    <button type="button" onclick="showHideModal('tambah_si')" class="bg-red-500 hover:bg-red-600 text-white text-xs py-2 px-3 rounded shadow">Batal</button>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white text-xs py-2 px-3 rounded shadow">OK</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

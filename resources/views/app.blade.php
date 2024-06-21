@@ -41,13 +41,13 @@
             <a href="/">Dashboard</a>
           </span>
           <span class="hover:border-b">
-            <a href="/">Pengguna</a>
+            <a href="/pengguna">Pengguna</a>
           </span>
           <span class="hover:border-b">
-            <a href="/">Kuisioner</a>
+            <a href="/kuesioner">Kuisioner</a>
           </span>
           <span class="hover:border-b">
-            <a href="/">Rekapitulasi</a>
+            <a href="/sistem-informasi">Rekapitulasi</a>
           </span>
           <span class="text-red-500 hover:border-b hover:border-red-500">
             <a href="/" class="flex gap-2 items-center">Logout 

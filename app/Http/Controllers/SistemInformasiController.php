@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\SistemInformasi;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -40,7 +41,51 @@ class SistemInformasiController extends Controller
             SistemInformasi::create($validate);
             return redirect('/sistem-informasi')->with(['success' => "Data Sistem Informasi berhasil ditambahkan"]);
         }catch(Exception $err){
-            dd($err);
+            // dd($validate);
+            dd([
+                "data" => $validate,
+                "error" => $err
+            ]);
+            return redirect('/sistem-informasi')->with(['error' => "Server Error!"]);
+        }
+    }
+
+    public function update(Request $request){
+        $validate = $request->validate([
+            "id" => ['required', 'min:1'],
+            "nama" => ['required', 'min:2'],
+            "deskripsi" => ['required', 'min: 2'],
+        ]);
+        $validate["updated_at"] = Carbon::now()->format("Y-m-d");
+        try{
+            $find = SistemInformasi::where('id', '=', $validate['id'])->first();
+            if(!$find){
+                return redirect('/sistem-informasi')->with(['error' => "Data Sistem Informasi tidak ditemukan!"]);
+            }
+            $find->nama = $validate["nama"];
+            $find->deskripsi = $validate["deskripsi"];
+            $find->updated_at = Carbon::now()->format("Y-m-d");
+            $find->save();
+
+            return redirect('/sistem-informasi')->with(['success' => "Update data berhasil!"]);
+        }catch(Exception $err){
+            dd([
+                "data" => $request,
+                "error" => $err
+            ]);
+            return redirect('/sistem-informasi')->with(['error' => "Server Error!"]);
+        }
+    }
+
+    public function delete(Request $request) {
+        try{
+            SistemInformasi::destroy($request["id"]);
+            return redirect('/sistem-informasi')->with(['success' => "Data Sistem Informasi berhasil dihapus"]);
+        }catch(Exception $err){
+            dd([
+                "data" => $request,
+                "error" => $err
+            ]);
             return redirect('/sistem-informasi')->with(['error' => "Server Error!"]);
         }
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SistemInformasiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +20,7 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 // User Route
-Route::get('/pengguna', function () {
-    return view('kelolaPengguna');
-})->middleware("auth");
+Route::get('/pengguna', [UserController::class, "index"])->middleware("auth");
 
 // Kuesioner Route
 Route::get('/kuesioner', function () {
@@ -29,5 +28,7 @@ Route::get('/kuesioner', function () {
 })->middleware("auth");
 
 // Rekapitulasi Route
-Route::get('/rekapitulasi', [SistemInformasiController::class, "index"])->middleware("auth");
-Route::post('/rekapitulasi', [SistemInformasiController::class, "create"])->middleware("auth");
+Route::get('/sistem-informasi', [SistemInformasiController::class, "index"])->middleware("auth");
+Route::post('/sistem-informasi', [SistemInformasiController::class, "create"])->middleware("auth");
+Route::put('/sistem-informasi', [SistemInformasiController::class, "update"])->middleware("auth");
+Route::get('/sistem-informasi/delete', [SistemInformasiController::class, "delete"])->middleware("auth");
