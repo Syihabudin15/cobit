@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite('resources/css/app.css')
 </head>
-<body class="relative overflow-hidden">
+<body class="relative">
   <div class="flex justify-between items-center px-7 py-3 md:py-4 border-b shadow bg-gray-600 text-white">
-    <div class="font-semibold italic text-blue-500">ASIKBP2MI</div>
+    <div class="font-semibold italic text-blue-500" >ASIKBP2MI</div>
     <div class="hidden sm:flex gap-6 text-sm">
       <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
         <a href="/">Dashboard</a>
@@ -60,16 +60,19 @@
       </div>
     </div>
   </div>
-  <div style="min-height: 85vh" class="bg-slate-50">
+  <div style="min-height: 85vh;" class="bg-slate-50">
     @yield("content")
   </div>
   <div class="flex-1 border p-3 text-xs">
     <span>Copyright by <a href="/" class="italic text-blue-500">ASIKBP2MI</a> Jawa Barat</span>
   </div>
+  
   <script>
-    let menuMobile = document.getElementById("menu-mobile");
     function handleClickMenu(){
-      menuMobile.classList.toggle("hidden");
+      document.getElementById("menu-mobile").classList.toggle("hidden");
+    }
+    function showHideModal(id){
+      document.getElementById(id).classList.toggle("auto-hide");
     }
   </script>
 </body>
