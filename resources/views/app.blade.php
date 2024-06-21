@@ -13,16 +13,16 @@
         <a href="/">Dashboard</a>
       </span>
       <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
-        <a href="/">Pengguna</a>
+        <a href="/pengguna">Pengguna</a>
       </span>
       <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
-        <a href="/">Kuisioner</a>
+        <a href="/kuesioner">Kuisioner</a>
       </span>
       <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
-        <a href="/">Rekapitulasi</a>
+        <a href="/rekapitulasi">Rekapitulasi</a>
       </span>
       <span class="text-red-500 hover:border-b hover:border-red-500">
-        <a href="/" class="flex gap-2 items-center">Logout 
+        <a href="/logout" class="flex gap-2 items-center">Logout 
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-4">
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
           </svg>
