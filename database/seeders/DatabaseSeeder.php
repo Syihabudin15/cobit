@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\SistemInformasi;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,7 +15,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-
+        SistemInformasi::create([
+            "id" => 1,
+            "nama" => "E-Kinerja",
+            "deskripsi" => "Menilai kinerja karwayan"
+        ]);
         User::factory()->create();
     }
 }

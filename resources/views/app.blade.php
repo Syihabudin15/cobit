@@ -12,14 +12,16 @@
       <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
         <a href="/">Dashboard</a>
       </span>
+      @if (Auth::User()->role === "AUDITOR")
+          <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
+            <a href="/pengguna">Pengguna</a>
+          </span>
+          <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
+            <a href="/kuesioner">Kuisioner</a>
+          </span>
+      @endif
       <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
-        <a href="/pengguna">Pengguna</a>
-      </span>
-      <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
-        <a href="/kuesioner">Kuisioner</a>
-      </span>
-      <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
-        <a href="/rekapitulasi">Rekapitulasi</a>
+        <a href="/sistem-informasi">Rekapitulasi</a>
       </span>
       <span class="text-red-500 hover:border-b hover:border-red-500">
         <a href="/logout" class="flex gap-2 items-center">Logout 
@@ -40,12 +42,14 @@
           <span class="hover:border-b">
             <a href="/">Dashboard</a>
           </span>
-          <span class="hover:border-b">
-            <a href="/pengguna">Pengguna</a>
-          </span>
-          <span class="hover:border-b">
-            <a href="/kuesioner">Kuisioner</a>
-          </span>
+          @if (Auth::User()->role === "AUDITOR")
+            <span class="hover:border-b">
+              <a href="/pengguna">Pengguna</a>
+            </span>
+            <span class="hover:border-b">
+              <a href="/kuesioner">Kuisioner</a>
+            </span>
+          @endif
           <span class="hover:border-b">
             <a href="/sistem-informasi">Rekapitulasi</a>
           </span>

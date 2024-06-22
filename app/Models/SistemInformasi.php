@@ -9,7 +9,7 @@ class SistemInformasi extends Model
 {
     use HasFactory;
     public $guarded = ["id"];
-    
+
     public function Kuesioner(){
         return $this->hasMany(Kuesioner::class);
     }

@@ -3,7 +3,7 @@
 @section("content")
 <section >
     <div class="w-full my-0 p-2 bg-white md:bg-slate-50">
-        <div class="p-3 md:p-20 bg-white md:flex md:flex-col md:justify-center overflow-x-auto border shadow">
+        <div class="p-2 md:p-20 bg-white md:flex md:flex-col md:justify-center overflow-x-auto border shadow">
             <div class="bg-blue-500 text-white font-bold italic p-3">
                 <p>Data Sistem Informasi</p>
             </div>
@@ -44,14 +44,14 @@
                     </td>
                 </tr>
             </table>
-        </div>
-        <div class="flex justify-end gap-0 mt-7 px-5 text-xs">
-            <a href="/" class="border px-2 py-1 rounded bg-blue-500 text-white">
-                <span>1</span>
-            </a>
-            <a href="/" class="border px-2 py-1 rounded bg-blue-500 text-white">
-                <span>2</span>
-            </a>
+            <div class="flex justify-end gap-0 mt-7 px-5 text-xs">
+                <a href="/" class="border px-2 py-1 rounded bg-blue-500 text-white">
+                    <span>1</span>
+                </a>
+                <a href="/" class="border px-2 py-1 rounded bg-blue-500 text-white">
+                    <span>2</span>
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -63,16 +63,6 @@
             </div>
             <div class="p-3 flex flex-wrap gap-2 text-xs">
                 <button class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded shadow">Tambah</button>
-                <form action="/pengguna" >
-                    <div class="flex items-center border rounded-sm">
-                        <input class="p-1" name="name" value="{{old("name")}}" required />
-                        <button class="border rounded-sm p-1" type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
-                                <path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-                </form>
             </div>
             <table class="text-sm">
                 <tr class="text-nowrap">
@@ -101,14 +91,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
-        <div class="flex justify-end gap-0 mt-7 px-5 text-xs">
-            <a href="/" class="border px-2 py-1 rounded bg-blue-500 text-white">
-                <span>1</span>
-            </a>
-            <a href="/" class="border px-2 py-1 rounded bg-blue-500 text-white">
-                <span>2</span>
-            </a>
         </div>
     </div>
 </section>

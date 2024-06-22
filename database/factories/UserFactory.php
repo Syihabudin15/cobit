@@ -28,6 +28,7 @@ class UserFactory extends Factory
             'username' => "decky",
             'role' => "AUDITOR",
             'password' => Hash::make('decky123'),
+            "sistem_informasi_id" => 1,
             'remember_token' => Str::random(10),
         ];
     }

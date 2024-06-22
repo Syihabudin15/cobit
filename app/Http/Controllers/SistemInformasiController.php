@@ -7,6 +7,7 @@ use App\Models\SistemInformasi;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SistemInformasiController extends Controller
 {
@@ -20,11 +21,19 @@ class SistemInformasiController extends Controller
         }else{
             $data = SistemInformasi::latest()->skip($skip)->take(20)->get();
         }
-        $total = SistemInformasi::latest()->get();
+        $total = count(SistemInformasi::latest()->get());
+        if(Auth::User()->role === "RESPONDEN"){
+            if(request("nama")){
+                $data = SistemInformasi::latest()->where("id", "=", Auth::User()->sistem_informasi_id)->orWhere("nama", "LIKE", "%". request("nama")."%")->get();
+            }else{
+                $data = SistemInformasi::latest()->where("id", "=", Auth::User()->sistem_informasi_id)->get();
+            }
+            $total = count(SistemInformasi::latest()->where("id", "=", Auth::User()->sistem_informasi_id)->get());
+        }
 
         return view("SistemInformasi", [
             "data" => $data,
-            "total" => request("nama") ? count($data) : count($total),
+            "total" => request("nama") ? count($data) : $total,
             "page" => $page
         ]);
     }
@@ -56,7 +65,6 @@ class SistemInformasiController extends Controller
             "nama" => ['required', 'min:2'],
             "deskripsi" => ['required', 'min: 2'],
         ]);
-        $validate["updated_at"] = Carbon::now()->format("Y-m-d");
         try{
             $find = SistemInformasi::where('id', '=', $validate['id'])->first();
             if(!$find){

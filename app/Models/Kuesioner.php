@@ -9,4 +9,5 @@ class Kuesioner extends Model
 {
     use HasFactory;
     public $guarded = ["id"];
+
 }

@@ -9,4 +9,5 @@ class JawabanResponden extends Model
 {
     use HasFactory;
     public $guarded = ["id"];
+
 }

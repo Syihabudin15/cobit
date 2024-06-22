@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SistemInformasiController;
 use App\Http\Controllers\UserController;
+use App\Models\SistemInformasi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,10 @@ Route::get('/logout', [AuthController::class, 'handleLogout'])->middleware('auth
 
 Route::get('/dashboard', function () {
     if(Auth::user()->role === "AUDITOR"){
-        return view('dashboard');
+        $data = SistemInformasi::latest()->get();
+        return view('dashboard', [
+            "data" => $data
+        ]);
     }else{
         return view('dashboardResponden');
     }
@@ -21,6 +25,9 @@ Route::get('/dashboard', function () {
 
 // User Route
 Route::get('/pengguna', [UserController::class, "index"])->middleware("auth");
+Route::post('/pengguna', [UserController::class, "create"])->middleware("auth");
+Route::put('/pengguna', [UserController::class, "update"])->middleware("auth");
+Route::get('/pengguna/delete', [UserController::class, "delete"])->middleware("auth");
 
 // Kuesioner Route
 Route::get('/kuesioner', function () {
