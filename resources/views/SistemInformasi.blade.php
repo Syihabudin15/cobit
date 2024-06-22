@@ -83,15 +83,15 @@
                     </tr>
                 @endfor
             </table>
-        </div>
-        <div class="flex justify-end gap-0 mt-7 px-5 text-xs">
-            @for ($i = 0; $i < ceil($total/20); $i++)
-                <a href="/sistem-informasi?page={{$i+1}}" clas="rounded shadow">
-                    <span class="px-2 py-1 border rounded shadow bg-blue-500 hover:bg-blue-600 {{$page == $i+1 ? "text-red-500" : "text-white"}} font-bold">
-                        {{$i+1}}
-                    </span>
-                </a>
-            @endfor
+            <div class="flex justify-end gap-0 mt-7 px-5 text-xs">
+                @for ($i = 0; $i < ceil($total/20); $i++)
+                    <a href="/sistem-informasi?page={{$i+1}}" clas="rounded shadow">
+                        <span class="px-2 py-1 border rounded shadow bg-blue-500 hover:bg-blue-600 {{$page == $i+1 ? "text-red-500" : "text-white"}} font-bold">
+                            {{$i+1}}
+                        </span>
+                    </a>
+                @endfor
+            </div>
         </div>
     </div>
 </section>
@@ -160,7 +160,7 @@
                 <div class="flex gap-5 items-center py-2">
                     <label for="deskripsi" class="w-32">Deskripsi</label>
                     <span class="w-10">:</span>
-                    <textarea name="deskripsi" id="deskripsi" class="border rounded w-full" value="${data.deskripsi}"></textarea>
+                    <textarea name="deskripsi" id="deskripsi" class="border rounded w-full">${data.deskripsi}</textarea>
                 </div>
             </div>
         `;

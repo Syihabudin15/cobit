@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->enum('role', ["AUDITOR", "RESPONDEN"]);
-            $table->foreignId('sistem_informasi_id')->constrained("sistem_informasis");
+            $table->foreignId('sistem_informasi_id')->constrained("sistem_informasis")->onDelete('cascade');;
             $table->rememberToken();
             $table->timestamps();
         });

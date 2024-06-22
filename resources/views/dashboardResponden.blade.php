@@ -47,7 +47,7 @@
                     <p class="text-sm mt-4">
                         Tekan mulai untuk memulai menjawab pertanyaan yang diajukan Auditor.
                     </p>
-                    <a href="/" class="flex justify-center mt-5">
+                    <a href="/isi-kuesioner" class="flex justify-center mt-5">
                         <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-7 rounded shadow text-xs">MULAI</button>
                     </a>
                 </div>

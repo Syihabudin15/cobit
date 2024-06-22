@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\JawabanRespondenController;
+use App\Http\Controllers\KuesionerController;
 use App\Http\Controllers\SistemInformasiController;
 use App\Http\Controllers\UserController;
 use App\Models\SistemInformasi;
@@ -30,9 +32,15 @@ Route::put('/pengguna', [UserController::class, "update"])->middleware("auth");
 Route::get('/pengguna/delete', [UserController::class, "delete"])->middleware("auth");
 
 // Kuesioner Route
-Route::get('/kuesioner', function () {
-    return view('Kuesioner');
-})->middleware("auth");
+Route::get('/kuesioner', [KuesionerController::class, "index"])->middleware("auth");
+Route::post('/kuesioner', [KuesionerController::class, "create"])->middleware("auth");
+Route::put('/kuesioner', [KuesionerController::class, "update"])->middleware("auth");
+Route::get('/kuesioner/delete', [KuesionerController::class, "delete"])->middleware("auth");
+
+// Isi Kuesioner Route
+Route::get('/isi-kuesioner', [JawabanRespondenController::class, "index"])->middleware("auth");
+Route::post('/isi-kuesioner', [JawabanRespondenController::class, "create"])->middleware("auth");
+
 
 // Rekapitulasi Route
 Route::get('/sistem-informasi', [SistemInformasiController::class, "index"])->middleware("auth");

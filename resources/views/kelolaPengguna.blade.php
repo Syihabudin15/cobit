@@ -82,15 +82,15 @@
                 </tr>
                 @endfor
             </table>
-        </div>
-        <div class="flex justify-end gap-0 mt-7 px-5 text-xs">
-            @for ($i = 0; $i < ceil($total/20); $i++)
-                <a href="/sistem-informasi?page={{$i+1}}" clas="rounded shadow">
-                    <span class="px-2 py-1 border rounded shadow bg-blue-500 hover:bg-blue-600 {{$page == $i+1 ? "text-red-500" : "text-white"}} font-bold">
-                        {{$i+1}}
-                    </span>
-                </a>
-            @endfor
+            <div class="flex justify-end gap-0 mt-7 px-5 text-xs">
+                @for ($i = 0; $i < ceil($total/20); $i++)
+                    <a href="/sistem-informasi?page={{$i+1}}" clas="rounded shadow">
+                        <span class="px-2 py-1 border rounded shadow bg-blue-500 hover:bg-blue-600 {{$page == $i+1 ? "text-red-500" : "text-white"}} font-bold">
+                            {{$i+1}}
+                        </span>
+                    </a>
+                @endfor
+            </div>
         </div>
     </div>
 </section>
