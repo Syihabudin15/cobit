@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kuesioner;
 use App\Models\SistemInformasi;
 use Carbon\Carbon;
 use Exception;
@@ -89,6 +90,26 @@ class SistemInformasiController extends Controller
         try{
             SistemInformasi::destroy($request["id"]);
             return redirect('/sistem-informasi')->with(['success' => "Data Sistem Informasi berhasil dihapus"]);
+        }catch(Exception $err){
+            dd([
+                "data" => $request,
+                "error" => $err
+            ]);
+            return redirect('/sistem-informasi')->with(['error' => "Server Error!"]);
+        }
+    }
+    public function detail(Request $request) {
+        try{
+            $find = SistemInformasi::where("id", "=", $request["id"])->first();
+            $kuesioner = Kuesioner::latest()->where("sistem_informasi_id", "=", $find->id)->get();
+            $data = [
+                "si" => $find,
+
+            ];
+            foreach ($kuesioner as $key => $value) {
+                array_push($data, [$key => $value]);
+            }
+            return view('Detail', $data);
         }catch(Exception $err){
             dd([
                 "data" => $request,

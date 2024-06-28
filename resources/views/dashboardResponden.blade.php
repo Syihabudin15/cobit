@@ -7,6 +7,11 @@
             <span class="text-blue-500 font-semibold">ASIKBP2MI</span>
         </span>
     </div>
+    @if ($message = Session::get('success'))
+        <div class="text-green-500 text-xs italic ps-5 text-center">
+            <span>{{ $message }}</span>
+        </div>
+    @endif
     <div class="bg-white flex flex-wrap gap-10 items-center">
         <div class="flex-1 p-3 text-sm">
             <table>

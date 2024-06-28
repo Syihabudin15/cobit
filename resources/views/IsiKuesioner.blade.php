@@ -29,6 +29,28 @@
         </div>
       </div>
     </div>
+    {{-- Start Error --}}
+    @if ($errors->any())
+    <div class="text-red-500 text-xs italic">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+    @if ($message = Session::get('error'))
+        <div class="text-red-500 text-xs italic ps-5">
+            <span>{{ $message }}</span>
+        </div>
+    @endif
+    @if ($message = Session::get('success'))
+        <div class="text-green-500 text-xs italic ps-5">
+            <span>{{ $message }}</span>
+        </div>
+    @endif
+    {{-- End Error --}}
     <div class="w-full mt-5">
       <table class="text-sm w-full">
         <tr class="text-nowrap">
@@ -101,11 +123,9 @@
       alert("Mohon isi semua kuesioner terlebih dahulu");
       return;
     }
-    let newData = [];
     for (const [key, value] of Object.entries(data)) {
-      newData.push({[key]: value})
+      el.innerHTML +=`<input name="${key}" value="${value}" />`      
     }
-    el.innerHTML +=`<input name="data" value="${newData}" />`
     btn.click();
   }
 </script>

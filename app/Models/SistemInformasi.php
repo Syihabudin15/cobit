@@ -13,4 +13,7 @@ class SistemInformasi extends Model
     public function Kuesioner(){
         return $this->hasMany(Kuesioner::class);
     }
+    public function User(){
+        return $this->hasMany(User::class);
+    }
 }

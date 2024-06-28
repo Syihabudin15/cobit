@@ -39,7 +39,7 @@ Route::get('/kuesioner/delete', [KuesionerController::class, "delete"])->middlew
 
 // Isi Kuesioner Route
 Route::get('/isi-kuesioner', [JawabanRespondenController::class, "index"])->middleware("auth");
-Route::post('/isi-kuesioner', [JawabanRespondenController::class, "create"])->middleware("auth");
+Route::post('/isi-kuesioner', [JawabanRespondenController::class, "create"]);
 
 
 // Rekapitulasi Route
@@ -47,3 +47,5 @@ Route::get('/sistem-informasi', [SistemInformasiController::class, "index"])->mi
 Route::post('/sistem-informasi', [SistemInformasiController::class, "create"])->middleware("auth");
 Route::put('/sistem-informasi', [SistemInformasiController::class, "update"])->middleware("auth");
 Route::get('/sistem-informasi/delete', [SistemInformasiController::class, "delete"])->middleware("auth");
+
+Route::get('/sistem-informasi/detail', [SistemInformasiController::class, "detail"])->middleware("auth");
