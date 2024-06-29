@@ -9,5 +9,8 @@ class Kuesioner extends Model
 {
     use HasFactory;
     public $guarded = ["id"];
-    
+
+    public function JawabanResponden(){
+        return $this->hasMany(JawabanResponden::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\JawabanResponden;
 use App\Models\Kuesioner;
 use App\Models\SistemInformasi;
 use Carbon\Carbon;
@@ -101,15 +102,18 @@ class SistemInformasiController extends Controller
     public function detail(Request $request) {
         try{
             $find = SistemInformasi::where("id", "=", $request["id"])->first();
-            $kuesioner = Kuesioner::latest()->where("sistem_informasi_id", "=", $find->id)->get();
-            $data = [
-                "si" => $find,
 
-            ];
-            foreach ($kuesioner as $key => $value) {
-                array_push($data, [$key => $value]);
-            }
-            return view('Detail', $data);
+            return view('Detail', [
+                "si" => $find,
+                "keterangan" => [
+                    "Incomplete proccess - Proses ini tidak diimplementasikan", 
+                    "Performed Proccess - Proses yang diimplementasikan", 
+                    "Managed proccess - Proses ini telah diimplementasikan dengan perencanaan", 
+                    "Estabilished process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan",
+                    "Predictable process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan, sehingga dapat memprediksi akan terjadinya serangan siber",
+                    "Optimizing process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan, sehingga dapat di prediksi akan adanya serangan siber, serta telah memiliki tim insiden response untuk mengatasi masalah ketika terjadi serangan siber",
+                ]
+            ]);
         }catch(Exception $err){
             dd([
                 "data" => $request,
@@ -117,5 +121,20 @@ class SistemInformasiController extends Controller
             ]);
             return redirect('/sistem-informasi')->with(['error' => "Server Error!"]);
         }
+    }
+    public function cetak(Request $request){
+        $find = SistemInformasi::where("id", "=", $request["id"])->first();
+        return view("Cetak", [
+            "nama" => $find->nama,
+            "si" => $find,
+            "keterangan" => [
+                "Incomplete proccess - Proses ini tidak diimplementasikan", 
+                "Performed Proccess - Proses yang diimplementasikan", 
+                "Managed proccess - Proses ini telah diimplementasikan dengan perencanaan", 
+                "Estabilished process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan",
+                "Predictable process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan, sehingga dapat memprediksi akan terjadinya serangan siber",
+                "Optimizing process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan, sehingga dapat di prediksi akan adanya serangan siber, serta telah memiliki tim insiden response untuk mengatasi masalah ketika terjadi serangan siber",
+            ]
+        ]);
     }
 }
