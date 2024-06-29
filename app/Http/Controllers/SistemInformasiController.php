@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\JawabanResponden;
-use App\Models\Kuesioner;
 use App\Models\SistemInformasi;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -124,7 +123,7 @@ class SistemInformasiController extends Controller
     }
     public function cetak(Request $request){
         $find = SistemInformasi::where("id", "=", $request["id"])->first();
-        return view("Cetak", [
+        $pdf = Pdf::loadView("cetak", [
             "nama" => $find->nama,
             "si" => $find,
             "keterangan" => [
@@ -136,5 +135,18 @@ class SistemInformasiController extends Controller
                 "Optimizing process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan, sehingga dapat di prediksi akan adanya serangan siber, serta telah memiliki tim insiden response untuk mengatasi masalah ketika terjadi serangan siber",
             ]
         ]);
+        return $pdf->download("Rekapitulasi.pdf");
+        // return view("Cetak", [
+        //     "nama" => $find->nama,
+        //     "si" => $find,
+        //     "keterangan" => [
+        //         "Incomplete proccess - Proses ini tidak diimplementasikan", 
+        //         "Performed Proccess - Proses yang diimplementasikan", 
+        //         "Managed proccess - Proses ini telah diimplementasikan dengan perencanaan", 
+        //         "Estabilished process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan",
+        //         "Predictable process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan, sehingga dapat memprediksi akan terjadinya serangan siber",
+        //         "Optimizing process - Proses ini telah diimplementasikan dengan perencanaan, dipantau dan ditetapkan, sehingga dapat di prediksi akan adanya serangan siber, serta telah memiliki tim insiden response untuk mengatasi masalah ketika terjadi serangan siber",
+        //     ]
+        // ]);
     }
 }

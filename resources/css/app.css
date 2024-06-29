@@ -68,3 +68,22 @@
         width: 90%;
     }
 }
+.body-cetak {
+    padding: 5px;
+}
+.header-cetak {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 5px;
+    align-items: center;
+}
+.data {
+    width: 80vw;
+    margin: 10px auto;
+}
+.item {
+    display: flex;
+    gap: 3px;
+    padding: 3px 0;
+}

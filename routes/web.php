@@ -49,4 +49,4 @@ Route::put('/sistem-informasi', [SistemInformasiController::class, "update"])->m
 Route::get('/sistem-informasi/delete', [SistemInformasiController::class, "delete"])->middleware("auth");
 
 Route::get('/sistem-informasi/detail', [SistemInformasiController::class, "detail"])->middleware("auth");
-Route::get('/cetak', [SistemInformasiController::class, "cetak"])->middleware("auth");
+Route::get('/cetak', [SistemInformasiController::class, "cetak"])->name("cetak")->middleware("auth");
