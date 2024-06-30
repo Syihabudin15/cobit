@@ -22,7 +22,7 @@
           </span>
       @endif
       <span class="hover:border-b hover:text-blue-500 hover:border-blue-500">
-        <a href="/sistem-informasi">Rekapitulasi</a>
+        <a href="/sistem-informasi">Sistem Informasi</a>
       </span>
       <span class="text-red-500 hover:border-b hover:border-red-500">
         <a href="/logout" class="flex gap-2 items-center">Logout 
@@ -52,7 +52,7 @@
             </span>
           @endif
           <span class="hover:border-b">
-            <a href="/sistem-informasi">Rekapitulasi</a>
+            <a href="/sistem-informasi">Sistem Informasi</a>
           </span>
           <span class="text-red-500 hover:border-b hover:border-red-500">
             <a href="/" class="flex gap-2 items-center">Logout 
