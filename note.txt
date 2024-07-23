@@ -1,0 +1,2 @@
+Jawaban Responden -> Checkkbox harus 1 yang dapat diisi
+Rekapitulasi      -> Cetak data masih belum bisa

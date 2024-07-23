@@ -15,9 +15,8 @@ class JawabanRespondenController extends Controller
     }
     public function create(Request $request){
         try{
-            // $data = [];
             for($i = 0; $i < count(Auth::User()->SistemInformasi->Kuesioner); $i++){
-                $find = JawabanResponden::where("kuesioner_id", "=", Auth::User()->SistemInformasi->Kuesioner[$i]->id)->orWhere("user_id", "=", Auth::user()->id)->first();
+                $find = JawabanResponden::where("kuesioner_id", "=", Auth::User()->SistemInformasi->Kuesioner[$i]->id)->where("user_id", "=", Auth::user()->id)->first();
                 if($find){
                     $find->jawaban = $request[Auth::User()->SistemInformasi->Kuesioner[$i]->id];
                     $find->save();
@@ -29,7 +28,6 @@ class JawabanRespondenController extends Controller
                     ]);
                 }
             }
-            // JawabanResponden::insert($data); 
             return redirect("/dashboard")->with(["success" => "Isi kuesioner berhasil!. lihat detail di rekapitulasi"]);
         }catch(Exception $err){
             dd([

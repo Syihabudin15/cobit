@@ -1,0 +1,21 @@
+.body-cetak {
+    padding: 10px;
+}
+.header {
+    border-bottom: 1px solid rgb(126, 126, 126);
+}
+h1 {
+    text-align: center;
+}
+.si-detail {
+    margin: 50px 0;
+}
+.si-item {
+    float: left;
+}
+.si-item .item-1 {
+    width: 300px;
+}
+.si-item .item-2 {
+    width: 50;
+}

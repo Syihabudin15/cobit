@@ -43,13 +43,15 @@
           <div class="ps-2 md:ps-11">
             @php
                 $totalJawaban = 0;
+                $count = 1;
             @endphp
             @foreach ($si->Kuesioner as $item)
             <div class="flex gap-3 py-2">
-              <span style="width: 200px">Pertanyaan ID {{$item->id}}</span>
+              <span style="width: 200px">Pertanyaan ID {{$count}}</span>
               <span style="width: 50px">:</span>
               <span style="width: 200px">
                 @php
+                $count+=1;
                   $total = 0;
                   foreach ($item->JawabanResponden as $jawaban) {
                     $total += $jawaban["jawaban"];
@@ -80,9 +82,11 @@
     </div>
   </div>
   <div class="flex justify-center gap-5 mt-2">
-    <a href="/cetak?id={{$si->id}}">
-      <button class="bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold italic py-2 px-3 rounded shadow">Cetak PDF</button>
-    </a>
+    @if (Auth::User()->role === "AUDITOR")
+      <a href="/cetak?id={{$si->id}}">
+        <button class="bg-blue-500 hover:bg-blue-600 text-white text-xs font-bold italic py-2 px-3 rounded shadow">Cetak PDF</button>
+      </a>
+    @endif
     <a href="/sistem-informasi">
       <button class="bg-red-500 hover:bg-red-600 text-white text-xs font-bold italic py-2 px-3 rounded shadow">Kembali</button>
     </a>

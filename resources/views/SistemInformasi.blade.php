@@ -30,7 +30,9 @@
             @endif
             {{-- End Error --}}
             <div class="p-3 flex flex-wrap gap-2 text-xs">
-                <button class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded shadow" onclick="showHideModal('tambah_si')">Tambah</button>
+                @if (Auth::User()->role === "AUDITOR")
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-4 rounded shadow" onclick="showHideModal('tambah_si')">Tambah</button>
+                @endif
                 <form action="/sistem-informasi" >
                     <div class="flex items-center border rounded-sm">
                         <input class="p-1" name="nama" value="{{old("nama")}}" />

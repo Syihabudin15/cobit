@@ -17,8 +17,40 @@ Route::get('/logout', [AuthController::class, 'handleLogout'])->middleware('auth
 Route::get('/dashboard', function () {
     if(Auth::user()->role === "AUDITOR"){
         $data = SistemInformasi::latest()->get();
+        $keterangan = [
+            "Incomplete proccess", 
+            "Performed Proccess", 
+            "Managed proccess", 
+            "Estabilished process",
+            "Predictable process",
+            "Optimizing process",
+        ];
+        $newData = [];
+        for($i = 0; $i < count($data); $i++){
+            $find = SistemInformasi::where("id", "=", $data[$i]["id"])->first();
+            $totalJawaban = 0;
+            foreach($find->Kuesioner as $kuesioner){
+                $total = 0;
+                foreach($kuesioner->JawabanResponden as $kues){
+                    $total += $kues->jawaban;
+                }
+                $totalJawaban += $total;
+            }
+            $temp = $totalJawaban / count($find->User);
+            $maturity = $temp / count($find->Kuesioner);
+            // dd($maturity);
+            array_push($newData, collect([
+                "no" => $i+1,
+                "nama" => $find->nama,
+                "tanggal" => $find->created_at,
+                "keterangan" => $find->deskripsi,
+                "kuesioner" => count($find->Kuesioner),
+                "responden" => count($find->User),
+                "maturity" => "$maturity - $keterangan[$maturity]"
+            ]));
+        }
         return view('dashboard', [
-            "data" => $data
+            "data" => $newData,
         ]);
     }else{
         return view('dashboardResponden');
