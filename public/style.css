@@ -11,11 +11,18 @@ h1 {
     margin: 50px 0;
 }
 .si-item {
-    float: left;
+    margin: 15px 0;
 }
-.si-item .item-1 {
+.item-1 {
     width: 300px;
 }
-.si-item .item-2 {
+.item-2 {
     width: 50;
 }
+.detail {
+    margin-top: 10px;
+}
+/* .img {
+    background-image: url("/logo.png");
+    background-size: 50px;
+} */

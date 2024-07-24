@@ -50,14 +50,36 @@
                     <th class="py-3 px-4 border border-gray-500">Sistem Informasi</th>
                     <th class="py-3 px-4 border border-gray-500">Deskripsi</th>
                     <th class="py-3 px-4 border border-gray-500">Tanggal</th>
+                    <th class="py-3 px-4 border border-gray-500">Maturity Level</th>
                     <th class="py-3 px-4 border border-gray-500">Aksi</th>
                 </tr>
-                @for ($i = 0; $i < $total; $i++)
+                @for ($i = 0; $i < count($data); $i++)
                     <tr>    
                         <td class="border py-2 px-1 text-center">{{$i+1}}</td>
                         <td class="border py-2 px-1 text-center">{{$data[$i]->nama}}</td>
                         <td class="border py-2 px-1 text-justify" style="width: 300px">{{$data[$i]->deskripsi}}</td>
                         <td class="border py-2 px-1 text-center">{{\Carbon\Carbon::parse($data[$i]->created_at)->format("d F Y")}}</td>
+                        @php
+                            $totalJawaban = 0;
+                            foreach($data[$i]->Kuesioner as $kuesioner){
+                                $total = 0;
+                                foreach($kuesioner->JawabanResponden as $kues){
+                                    $total += $kues->jawaban;
+                                }
+                                $totalJawaban += $total;
+                            }
+                            $temp = count($data[$i]->User) === 0 ? 0 : $totalJawaban / count($data[$i]->User);
+                            $maturity = floor(count($data[$i]->Kuesioner) === 0 ? 0 : $temp / count($data[$i]->Kuesioner))  ;
+                            $keterangan = [
+                                "Incomplete proccess", 
+                                "Performed Proccess", 
+                                "Managed proccess", 
+                                "Estabilished process",
+                                "Predictable process",
+                                "Optimizing process",
+                            ];
+                        @endphp
+                        <td class="border py-2 px-1 text-center">{{$maturity}} - {{$keterangan[$maturity]}}</td>
                         <td class="border py-2 px-1 text-center">
                             @if (Auth::user()->role === "AUDITOR")
                                 <button onclick="handleUpdate({{$data[$i]}}, 'edit_si')" class="bg-green-500 hover:bg-green-600 text-white p-1 rounded shadow">

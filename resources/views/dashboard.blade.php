@@ -17,7 +17,7 @@
                     <th class="py-3 px-7 border border-gray-500">Keterangan</th>
                     <th class="py-3 px-4 border border-gray-500">Jumlah Kuesioner</th>
                     <th class="py-3 px-4 border border-gray-500">Jumlah Responden</th>
-                    <th class="py-3 px-4 border border-gray-500">Hasil</th>
+                    <th class="py-3 px-4 border border-gray-500">Maturity Level</th>
                 </tr>
                 @for ($i = 0; $i < count($data); $i++)
                     <tr>
@@ -26,7 +26,7 @@
                         <td class="border py-2 px-1 text-center">{{\Carbon\Carbon::parse($data[$i]["tanggal"])->format("d F Y")}}</td>
                         <td class="border py-2 px-1">{{$data[$i]["keterangan"]}}</td>
                         <td class="border py-2 px-1 text-center">{{$data[$i]["kuesioner"]}}</td>
-                        <td class="border py-2 px-1 text-center">{{$data[$i]["responden"]-1}}</td>
+                        <td class="border py-2 px-1 text-center">{{$data[$i]["responden"] === 0 ? 0 :$data[$i]["responden"] -1}}</td>
                         <td class="border py-2 px-1 text-center">{{$data[$i]["maturity"]}}</td>
                     </tr>
                 @endfor

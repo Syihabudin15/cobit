@@ -36,9 +36,8 @@ Route::get('/dashboard', function () {
                 }
                 $totalJawaban += $total;
             }
-            $temp = $totalJawaban / count($find->User);
-            $maturity = $temp / count($find->Kuesioner);
-            // dd($maturity);
+            $temp = count($find->User) === 0 ? 0 : $totalJawaban /  count($find->User);
+            $maturity = floor(count($find->Kuesioner) === 0 ? 0 : $temp / count($find->Kuesioner ));
             array_push($newData, collect([
                 "no" => $i+1,
                 "nama" => $find->nama,

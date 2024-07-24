@@ -68,8 +68,8 @@
           <span style="width: 200px">Maturity Level</span>
           <span style="width: 50px">:</span>
           @php
-              $temp = $totalJawaban / count($si->User);
-              $maturity = $temp / count($si->Kuesioner);
+              $temp = count($si->User) === 0 ? 0 : $totalJawaban / count($si->User);
+              $maturity = count($si->Kuesioner) === 0 ? 0 : $temp / count($si->Kuesioner);
           @endphp
           <span style="width: 200px">{{floor($maturity)}}</span>
         </div>

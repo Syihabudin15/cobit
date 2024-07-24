@@ -21,7 +21,7 @@
             </div>
             <table class="text-sm">
                 <tr class="text-nowrap">
-                    <th class="py-3 px-4 border border-gray-500">No</th>
+                    <th class="py-3 px-4 border border-gray-500">ID</th>
                     <th class="py-3 px-4 border border-gray-500">Sistem Informasi</th>
                     <th class="py-3 px-4 border border-gray-500">Deskripsi</th>
                     <th class="py-3 px-4 border border-gray-500">Tanggal</th>

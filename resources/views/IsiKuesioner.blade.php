@@ -67,19 +67,19 @@
             <td class="border flex flex-wrap justify-center gap-5 py-2 px-1 text-center items-center w-96">
                 <div class="flex justify-center items-center gap-1 border p-1">
                   <span>1</span>
-                  <input type="checkbox" onclick="handleClick('{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}', 1)">
+                  <input type="checkbox" onclick="handleClick('{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}', 1)" id="{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}-1">
                 </div>
                 <div class="flex justify-center items-center gap-1 border p-1">
                   <span>2</span>
-                  <input type="checkbox" onclick="handleClick('{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}', 2)">
+                  <input type="checkbox" onclick="handleClick('{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}', 2)" id="{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}-2">
                 </div>
                 <div class="flex justify-center items-center gap-1 border p-1">
                   <span>3</span>
-                  <input type="checkbox" onclick="handleClick('{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}', 3)">
+                  <input type="checkbox" onclick="handleClick('{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}', 3)"id="{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}-3">
                 </div>
                 <div class="flex justify-center items-center gap-1 border p-1">
                   <span>4</span>
-                  <input type="checkbox" onclick="handleClick('{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}', 4)">
+                  <input type="checkbox" onclick="handleClick('{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}', 4)" id="{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}-4">
                 </div>
                 <div id="{{Auth::User()->SistemInformasi->Kuesioner[$i]['id']}}">
                   
@@ -113,6 +113,12 @@
     }else{
       el.innerHTML = ""
     }
+    [1,2,3,4].forEach(e => {
+      if(e != value){
+        let oldEl = document.getElementById(`${id}-${e}`);
+        oldEl.checked = false;
+      }
+    });
   }
   async function handleSubmit(total){
     let el = document.getElementById("form-post");
