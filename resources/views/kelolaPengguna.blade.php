@@ -62,7 +62,7 @@
                     <td class="border py-2 px-1 text-center">{{$data[$i]->nama}}</td>
                     <td class="border py-2 px-1 text-center">{{$data[$i]->username}}</td>
                     <td class="border py-2 px-1 text-center">{{$data[$i]->role}}</td>
-                    <td class="border py-2 px-1 text-center">{{$data[$i]->SistemInformasi["nama"]}}</td>
+                    <td class="border py-2 px-1 text-center">{{$data[$i]->SistemInformasi ? $data[$i]->SistemInformasi["nama"]: "-"}}</td>
                     <td class="border py-2 px-1 text-center">
                         <button class="bg-green-500 hover:bg-green-600 text-white p-1 rounded shadow" onclick="handleUpdate({{$data[$i]}},'edit_pengguna')">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">

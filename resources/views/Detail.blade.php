@@ -68,15 +68,15 @@
           <span style="width: 200px">Maturity Level</span>
           <span style="width: 50px">:</span>
           @php
-              $temp = count($si->User) === 0 ? 0 : $totalJawaban / count($si->User);
+              $temp = count($si->User) === 0 ? 0 : $totalJawaban / (count($si->User)-1 === 0 ? 1 : count($si->User)-1);
               $maturity = count($si->Kuesioner) === 0 ? 0 : $temp / count($si->Kuesioner);
           @endphp
-          <span style="width: 200px">{{floor($maturity)}}</span>
+          <span style="width: 200px">{{floor($maturity)+1}}</span>
         </div>
         <div class="flex gap-3 py-2">
           <span style="width: 200px">Keterangan</span>
           <span style="width: 50px">:</span>
-          <span style="width: 200px" class="text-justify">{{$keterangan[$maturity]}}</span>
+          <span style="width: 200px" class="text-justify">{{$keterangan[$maturity+1]}}</span>
         </div>
       </div>
     </div>

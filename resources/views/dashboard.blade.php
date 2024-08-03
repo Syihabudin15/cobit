@@ -26,7 +26,7 @@
                         <td class="border py-2 px-1 text-center">{{\Carbon\Carbon::parse($data[$i]["tanggal"])->format("d F Y")}}</td>
                         <td class="border py-2 px-1">{{$data[$i]["keterangan"]}}</td>
                         <td class="border py-2 px-1 text-center">{{$data[$i]["kuesioner"]}}</td>
-                        <td class="border py-2 px-1 text-center">{{$data[$i]["responden"] === 0 ? 0 :$data[$i]["responden"] -1}}</td>
+                        <td class="border py-2 px-1 text-center">{{$data[$i]["responden"] === 0 ? 0 :$data[$i]["responden"]}}</td>
                         <td class="border py-2 px-1 text-center">{{$data[$i]["maturity"]}}</td>
                     </tr>
                 @endfor

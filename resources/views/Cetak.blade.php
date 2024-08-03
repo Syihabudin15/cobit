@@ -79,15 +79,15 @@
           <span >Maturity Level</span>
           <span >:</span>
           @php
-              $temp = $totalJawaban / count($si->User);
-              $maturity = $temp / count($si->Kuesioner);
+              $temp = $totalJawaban / (count($si->User)-1 === 0 ? 1  : count($si->User)-1);
+              $maturity = $temp / (count($si->Kuesioner) === 0 ? 1 : count($si->Kuesioner));
           @endphp
-          <span >{{floor($maturity)}}</span>
+          <span >{{floor($maturity)+1}}</span>
         </div>
         <div class="si-item">
           <span >Keterangan</span>
           <span >:</span>
-          <span  class="text-justify">{{$keterangan[$maturity]}}</span>
+          <span  class="text-justify">{{$keterangan[$maturity+1]}}</span>
         </div>
       </div>
     </div>

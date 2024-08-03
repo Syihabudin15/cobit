@@ -6,6 +6,7 @@ use App\Http\Controllers\KuesionerController;
 use App\Http\Controllers\SistemInformasiController;
 use App\Http\Controllers\UserController;
 use App\Models\SistemInformasi;
+use App\Models\JawabanResponden;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,8 +37,8 @@ Route::get('/dashboard', function () {
                 }
                 $totalJawaban += $total;
             }
-            $temp = count($find->User) === 0 ? 0 : $totalJawaban /  count($find->User);
-            $maturity = floor(count($find->Kuesioner) === 0 ? 0 : $temp / count($find->Kuesioner ));
+            $temp = count($find->User) === 0 ? 0 : $totalJawaban /  (count($find->User)-1 === 0 ? 1 : count($find->User)-1);
+            $maturity = floor(count($find->Kuesioner) === 0 ? 0 : $temp / count($find->Kuesioner ))+1;
             array_push($newData, collect([
                 "no" => $i+1,
                 "nama" => $find->nama,
@@ -52,7 +53,10 @@ Route::get('/dashboard', function () {
             "data" => $newData,
         ]);
     }else{
-        return view('dashboardResponden');
+        $result = JawabanResponden::where("user_id", "=", Auth::User()->id)->first();
+        return view('dashboardResponden', [
+            "jawab" => $result ? false : true
+        ]);
     }
 })->middleware('auth');
 

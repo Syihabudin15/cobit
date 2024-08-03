@@ -68,7 +68,7 @@
                                 }
                                 $totalJawaban += $total;
                             }
-                            $temp = count($data[$i]->User) === 0 ? 0 : $totalJawaban / count($data[$i]->User);
+                            $temp = count($data[$i]->User) === 0 ? 0 : $totalJawaban / ((count($data[$i]->User)-1 === 0 ? 1 : count($data[$i]->User)-1));
                             $maturity = floor(count($data[$i]->Kuesioner) === 0 ? 0 : $temp / count($data[$i]->Kuesioner))  ;
                             $keterangan = [
                                 "Incomplete proccess", 
@@ -79,7 +79,7 @@
                                 "Optimizing process",
                             ];
                         @endphp
-                        <td class="border py-2 px-1 text-center">{{$maturity}} - {{$keterangan[$maturity]}}</td>
+                        <td class="border py-2 px-1 text-center">{{$maturity+1}} - {{$keterangan[$maturity+1]}}</td>
                         <td class="border py-2 px-1 text-center">
                             @if (Auth::user()->role === "AUDITOR")
                                 <button onclick="handleUpdate({{$data[$i]}}, 'edit_si')" class="bg-green-500 hover:bg-green-600 text-white p-1 rounded shadow">
