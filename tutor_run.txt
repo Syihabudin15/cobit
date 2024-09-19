@@ -1,0 +1,24 @@
+Pra-requirement:
+- xampp
+- composer
+- node js
+- vscode
+
+1. jalankan xampp (mysql & apache) lalu buka http://localhost/phpmyadmin
+2. buat database baru dengan nama -> db_audit_si
+3. buka project di vscode dan jalankan terminal vscode
+4. jalankan command -> composer install
+5. jalankan command -> npm install
+6. jalankan command -> php artisan migrate:fresh
+7. jalankan command -> php artisan db:seed
+8. jalankan command -> npm run dev
+9. buka terminal baru atau split terminal
+10. jalankan command -> php artisan serve -> lalu buka link yang muncul setelah comman tersebut.
+
+jika muncul error dan tulisan generate key, klik saja generate key dan refresh halaman
+untuk user pertama yang dapat digunakan adalah:
+
+username : decky
+password: decky123
+
+pastikan urutan yang dilakukan sesuai agar sistem dapat berjalan dengan lancar
