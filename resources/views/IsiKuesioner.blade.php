@@ -31,7 +31,7 @@
     </div>
     {{-- Start Error --}}
     @if ($errors->any())
-    <div class="text-red-500 text-xs italic">
+    <div class="text-white text-xs italic bg-red-500 p-2">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -41,12 +41,12 @@
     @endif
 
     @if ($message = Session::get('error'))
-        <div class="text-red-500 text-xs italic ps-5">
+        <div class="text-white text-xs italic ps-5 bg-red-500 p-2">
             <span>{{ $message }}</span>
         </div>
     @endif
     @if ($message = Session::get('success'))
-        <div class="text-green-500 text-xs italic ps-5">
+        <div class="text-white text-xs italic ps-5 bg-green-500 p-2">
             <span>{{ $message }}</span>
         </div>
     @endif

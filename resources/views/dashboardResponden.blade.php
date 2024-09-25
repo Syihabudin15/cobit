@@ -36,7 +36,7 @@
                     <td class="py-1 px-5">{{Auth::User()->SistemInformasi["deskripsi"]}}</td>
                 </tr>
                 <tr>
-                    <td class="py-1 px-5 text-nowrap">Jumlah Kuesioner</td>
+                    <td class="py-1 px-5 text-nowrap">Jumlah Pertanyaan</td>
                     <td class="py-1 px-5 text-nowrap text-justify">:</td>
                     <td class="py-1 px-5">{{count(Auth::User()->SistemInformasi->Kuesioner)}}</td>
                 </tr>

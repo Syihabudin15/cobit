@@ -15,7 +15,7 @@
                     <th class="py-3 px-4 border border-gray-500">Sistem Informasi</th>
                     <th class="py-3 px-4 border border-gray-500">Tanggal</th>
                     <th class="py-3 px-7 border border-gray-500">Keterangan</th>
-                    <th class="py-3 px-4 border border-gray-500">Jumlah Kuesioner</th>
+                    <th class="py-3 px-4 border border-gray-500">Jumlah Pertanyaan</th>
                     <th class="py-3 px-4 border border-gray-500">Jumlah Responden</th>
                     <th class="py-3 px-4 border border-gray-500">Maturity Level</th>
                 </tr>

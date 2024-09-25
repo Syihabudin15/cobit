@@ -28,7 +28,7 @@
                     <th class="py-3 px-4 border border-gray-500">Aksi</th>
                 </tr>
                 @for ($i = 0; $i < count($data); $i++)
-                    <tr>
+                    <tr id="data-{{$data[$i]->id}}">
                         <td class="border py-2 px-1 text-center">{{$i+1}}</td>
                         <td class="border py-2 px-1 text-center">{{$data[$i]->nama}}</td>
                         <td class="border py-2 px-1 text-justify" style="width: 300px">{{$data[$i]->deskripsi}}</td>
@@ -64,7 +64,7 @@
             </div>
             {{-- Start Error --}}
             @if ($errors->any())
-            <div class="text-red-500 text-xs italic">
+            <div class="text-white text-xs italic bg-red-500 p-2 my-1">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -74,12 +74,12 @@
             @endif
 
             @if ($message = Session::get('error'))
-                <div class="text-red-500 text-xs italic ps-5">
+                <div class="text-white text-xs italic ps-5 p-2 bg-red-500 my-1">
                     <span>{{ $message }}</span>
                 </div>
             @endif
             @if ($message = Session::get('success'))
-                <div class="text-green-500 text-xs italic ps-5">
+                <div class="text-white text-xs italic ps-5 p-2 bg-green-500 my-1">
                     <span>{{ $message }}</span>
                 </div>
             @endif
@@ -140,7 +140,13 @@
                 <div class="flex gap-5 items-center py-2">
                     <label for="pertanyaan" class="w-32">Pertanyaan</label>
                     <span class="w-10">:</span>
-                    <textarea name="pertanyaan" id="pertanyaan" class="border rounded w-full"></textarea>
+                    <!-- <textarea name="pertanyaan" id="pertanyaan" class="border rounded w-full"></textarea> -->
+                    <select class="border rounded w-full" name="pertanyaan">
+                    <option value="EDM01">EDM01</option>
+                    <option value="EDM02">EDM02</option>
+                    <option value="EDM04">EDM04</option>
+                    <option value="MEA01">MEA01</option>
+                    </select>
                 </div>
                 <div class="flex gap-5 justify-end mt-5">
                     <button type="button" onclick="showHideModal('tambah_kuesioner')" class="bg-red-500 hover:bg-red-600 text-white text-xs py-2 px-3 rounded shadow">Batal</button>
@@ -172,6 +178,15 @@
 <script>
     function getDetail(data, id){
         let el = document.getElementById("table-kuesioner");
+        let currTable = document.getElementById(`data-${id}`);
+        let currTableBg = document.getElementsByClassName(`change-bg`);
+
+        if(currTableBg.length > 0){
+            currTableBg[0].classList.remove("change-bg");
+        }
+
+        currTable.classList.add("change-bg");
+
         let forLoopData = `
         <tr class="text-nowrap">
             <th class="py-3 px-4 border border-gray-500">No</th>
@@ -223,7 +238,13 @@
                 <div class="flex gap-5 items-center py-2">
                     <label for="pertanyaan" class="w-32">Pertanyaan</label>
                     <span class="w-10">:</span>
-                    <textarea name="pertanyaan" id="pertanyaan" class="border rounded w-full">${data.pertanyaan}</textarea>
+                    <select class="border rounded w-full" name="pertanyaan">
+                        <option>Choose</option>
+                        <option value="EDM01">EDM01</option>
+                        <option value="EDM02">EDM02</option>
+                        <option value="EDM04">EDM04</option>
+                        <option value="MEA01">MEA01</option>
+                    </select>
                 </div>
             </div>
         `;
