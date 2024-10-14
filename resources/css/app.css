@@ -91,3 +91,7 @@
     background-color: rgb(0, 0, 219);
     color: white;
 }
+
+#pertanyaan option {
+    word-wrap: break-word;
+}

@@ -135,18 +135,30 @@
                 <div class="flex gap-5 items-center py-2">
                     <label for="domain" class="w-32">Domain</label>
                     <span class="w-10">:</span>
-                    <input type="text" name="domain" id="domain" class="border p-1 rounded w-full" value="{{old("domain")}}"/>
+                    <!-- <textarea name="pertanyaan" id="pertanyaan" class="border rounded w-full"></textarea> -->
+                    <select class="border rounded w-full" name="domain" id="domain">
+                        <option value="EDM01">EDM01</option>
+                        <option value="EDM02">EDM02</option>
+                        <option value="EDM04">EDM04</option>
+                        <option value="MEA01">MEA01</option>
+                    </select>
                 </div>
                 <div class="flex gap-5 items-center py-2">
                     <label for="pertanyaan" class="w-32">Pertanyaan</label>
                     <span class="w-10">:</span>
-                    <!-- <textarea name="pertanyaan" id="pertanyaan" class="border rounded w-full"></textarea> -->
-                    <select class="border rounded w-full" name="pertanyaan">
-                    <option value="EDM01">EDM01</option>
-                    <option value="EDM02">EDM02</option>
-                    <option value="EDM04">EDM04</option>
-                    <option value="MEA01">MEA01</option>
+                    <select class="border rounded w-full" name="pertanyaan" id="pertanyaan">
+                        <option value="Tidak ada hambatan dalam penggunaan aplikasi bantu yang digunakan? Seperti error atau dokumentasi penggunaan yang kurang lengkap?">
+                            Tidak ada hambatan dalam penggunaan aplikasi bantu yang digunakan,
+                            Seperti error atau dokumentasi penggunaan yang kurang lengkap?
+                         </option>
+                        <option value="Hambatan dalam penggunaan aplikasi bantu tidak berpengaruh pada kegiatan operasional sehari-hari perusahaan?">Hambatan dalam penggunaan aplikasi bantu tidak berpengaruh pada kegiatan operasional sehari-hari perusahaan?</option>
+                        <option value="Apakah organisasi memiliki metrik yang jelas untuk mengukur kontribusi TI terhadap tujuan bisnis?">Apakah organisasi memiliki metrik yang jelas untuk mengukur kontribusi TI terhadap tujuan bisnis?</option>
+                        <option value=
+            "Apakah proses pengelolaan portofolio TI diterapkan untuk mendukung prioritas strategis?">Apakah proses pengelolaan portofolio TI diterapkan untuk mendukung prioritas strategis?</option>
+                        <option value=
+            "Apakah semua stakeholder memahami nilai dan manfaat yang diharapkan dari proyek TI?">Apakah semua stakeholder memahami nilai dan manfaat yang diharapkan dari proyek TI?</option>
                     </select>
+                    <!-- <input type="text" name="pertanyaan" id="pertanyaan" class="border p-1 rounded w-full" value="{{old("domain")}}"/> -->
                 </div>
                 <div class="flex gap-5 justify-end mt-5">
                     <button type="button" onclick="showHideModal('tambah_kuesioner')" class="bg-red-500 hover:bg-red-600 text-white text-xs py-2 px-3 rounded shadow">Batal</button>
@@ -249,5 +261,41 @@
             </div>
         `;
     }
+    const domains = [
+        {name: "EDM01", quest: [
+            "Tidak ada hambatan dalam penggunaan aplikasi bantu yang digunakan, Seperti error atau dokumentasi penggunaan yang kurang lengkap?",
+            "Hambatan dalam penggunaan aplikasi bantu tidak berpengaruh pada kegiatan operasional sehari-hari perusahaan?",
+            "Apakah organisasi memiliki metrik yang jelas untuk mengukur kontribusi TI terhadap tujuan bisnis?",
+            "Apakah proses pengelolaan portofolio TI diterapkan untuk mendukung prioritas strategis?",
+            "Apakah semua stakeholder memahami nilai dan manfaat yang diharapkan dari proyek TI?"
+        ]},
+        {name: "EDM02", quest: [
+            "Tidak pernah terjadi serangan siber terhadap aplikasi bantu yang digunakan dalam kurun waktu 6 bulan terakhir?",
+            "Aplikasi bantu yang digunakan sudah pernah dilakukan audit?",
+            "Apakah organisasi memiliki kebijakan yang jelas untuk memastikan bahwa TI selaras dengan tujuan strategis?",
+            "Apakah proses komunikasi dan kolaborasi antara TI dan unit bisnis dijalankan secara efektif?",
+            "Apakah semua proyek TI dievaluasi berdasarkan dampaknya terhadap pencapaian tujuan bisnis?"
+        ]},
+        {name: "EDM04", quest: [
+            "Tersedia tim yang dikhususkan untuk menangani insiden ketika terjadi serangan siber?","Ada kebijakan atau jadwal untuk dilakukan pemeliharaan pada setiap sistem informasi yang digunakan?",
+            "Apakah organisasi memiliki proses yang jelas untuk memastikan bahwa nilai TI secara teratur dievaluasi?",
+            "Apakah ada mekanisme untuk mengumpulkan umpan balik dari stakeholder tentang kinerja TI?",
+            "Apakah hasil evaluasi nilai TI digunakan untuk perbaikan berkelanjutan dalam pengelolaan TI?"
+        ]},
+        {name: "MEA01", quest: [
+            "Tersedia alat untuk memantau dan mendeteksi akan adanya serangan siber?","Tersedia kebijakan untuk memberikan pelatihan yang diperlukan kepada karyawan baru?",
+            "Apakah organisasi memiliki proses yang jelas untuk mengevaluasi kinerja TI secara teratur?",
+            "Apakah ada indikator kinerja (KPI) yang ditetapkan untuk mengukur efektivitas layanan TI?",
+            "Apakah organisasi memiliki laporan kinerja TI yang secara rutin dibagikan kepada manajemen dan stakeholder?"
+        ]},
+    ]
+    document.getElementById("domain").addEventListener("change", (e) => {
+        let newOpt = ``;
+        const filter = domains.filter((domain) => domain.name === e.target.value);
+        for(let i = 0; i < filter[0].quest.length; i++){
+            newOpt+= `<option value="${filter[0].quest[i]}">${filter[0].quest[i]}</option>`;
+        }
+        document.getElementById("pertanyaan").innerHTML = newOpt;
+    })
 </script>
 @endsection
