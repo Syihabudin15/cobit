@@ -18,7 +18,7 @@ Pra-requirement:
 jika muncul error dan tulisan generate key, klik saja generate key dan refresh halaman
 untuk user pertama yang dapat digunakan adalah:
 
-username : decky
-password: decky123
+username : dekky
+password: dekky123
 
 pastikan urutan yang dilakukan sesuai agar sistem dapat berjalan dengan lancar
